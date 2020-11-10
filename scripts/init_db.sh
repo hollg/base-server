@@ -7,7 +7,7 @@ DB_USER=${POSTGRES_USER:=postgres}
 # Check if a custom password has been set, otherwise default to 'password'
 DB_PASSWORD="${POSTGRES_PASSWORD:=password}"
 # Check if a custom database name has been set, otherwise default to 'example'
-DB_NAME="${POSTGRES_DB:=example}"
+DB_NAME="${POSTGRES_DB:=postgres}"
 # Check if a custom host has been set, otherwise default to 'localhost'
 DB_HOST="${POSTGRES_HOST:=localhost}"
 # Check if a custom port has been set, otherwise default to '5432'
