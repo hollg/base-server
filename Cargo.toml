@@ -1,9 +1,33 @@
 [package]
-name = "base-server"
-version = "0.1.0"
 authors = ["Gary Holland <garyhollandxyz@gmail.com>"]
 edition = "2018"
+name = "base_server"
+version = "0.1.0"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "server"
+path = "src/main.rs"
 
 [dependencies]
+actix-rt = "1.1.1"
+actix-web = "3.2.0"
+chrono = "0.4.15"
+config = "0.10.1"
+serde = {version = "1", features = ["derive"]}
+serde-aux = "1.1.0"
+sqlx = {version = "0.4.0-beta.1", default-features = false, features = ["runtime-tokio", "macros", "postgres", "uuid", "chrono", "migrate", "offline"]}
+tracing = "0.1.21"
+tracing-actix-web = "0.2.1"
+tracing-bunyan-formatter = "0.1.6"
+tracing-futures = "0.2.4"
+tracing-log = "0.1.1"
+tracing-subscriber = {version = "0.2.12", features = ["registry", "env-filter"]}
+uuid = {version = "0.8.1", features = ["v4"]}
+
+[dev-dependencies]
+lazy_static = "1.4.0"
+reqwest = "0.10.8"
+tokio = "0.2.22"
