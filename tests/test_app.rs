@@ -1,5 +1,5 @@
 use base_server::{
-    configuration::{get_configuration, DatabaseSettings},
+    config::{get_config, DatabaseSettings},
     startup::run,
     telemetry::{get_subscriber, init_subscriber},
 };
@@ -34,10 +34,10 @@ pub async fn spawn_app() -> TestApp {
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
     let address = format!("http://127.0.0.1:{}", port);
-    let mut configuration = get_configuration().expect("Failed to read configuration.");
-    configuration.database.database_name = Uuid::new_v4().to_string();
+    let mut config = get_config().expect("Failed to read configuration.");
+    config.database.database_name = Uuid::new_v4().to_string();
 
-    let connection_pool = configure_database(&configuration.database).await;
+    let connection_pool = configure_database(&config.database).await;
 
     let server = run(listener, connection_pool.clone()).expect("Failed to bind address");
     let _ = tokio::spawn(server);

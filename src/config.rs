@@ -52,10 +52,10 @@ impl DatabaseSettings {
 /// and environment variables with a prefix of APP and '__' as separator.
 ///
 /// E.g. `APP_APPLICATION__PORT=5001` would set `Settings.application.port` to `5001`
-pub fn get_configuration() -> Result<Settings, config::ConfigError> {
+pub fn get_config() -> Result<Settings, config::ConfigError> {
     let mut settings = config::Config::default();
     let base_path = std::env::current_dir().expect("Failed to determine the current directory");
-    let configuration_directory = base_path.join("configuration");
+    let configuration_directory = base_path.join("config");
     settings.merge(config::File::from(configuration_directory.join("base")).required(true))?;
     let environment: Environment = std::env::var("APP_ENVIRONMENT")
         .unwrap_or_else(|_| "dev".into())
