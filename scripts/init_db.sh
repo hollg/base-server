@@ -5,8 +5,8 @@ set -eo pipefail
 # Check if a custom user has been set, otherwise default to 'postgres'
 DB_USER=${POSTGRES_USER:=postgres}
 # Check if a custom password has been set, otherwise default to 'password'
-DB_PASSWORD="${POSTGRES_PASSWORD:=postgres}"
-# Check if a custom database name has been set, otherwise default to 'example'
+DB_PASSWORD="${POSTGRES_PASSWORD:=password}"
+# Check if a custom database name has been set, otherwise default to 'postgres'
 DB_NAME="${POSTGRES_DB:=postgres}"
 # Check if a custom host has been set, otherwise default to 'localhost'
 DB_HOST="${POSTGRES_HOST:=localhost}"
@@ -36,8 +36,7 @@ echo >&2 "Postgres is up and running on port ${DB_PORT} - running migrations now
 
 export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 # For GitHub Actions workflow
-# echo "::set-env name=DATABASE_URL::${DATABASE_URL}"
-echo "DATABASE_URL=${DATABASE_URL}" >> $GITHUB_ENV
+echo "DATABASE_URL=${DATABASE_URL}" >>$GITHUB_ENV
 
 sqlx database create
 sqlx migrate run

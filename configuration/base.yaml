@@ -4,5 +4,5 @@ database:
   host: "localhost"
   port: 5432
   username: "postgres"
-  password: "postgres"
-  database_name: "example"
+  password: "password"
+  database_name: "postgres"
