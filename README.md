@@ -1,4 +1,5 @@
 # base-server
+![CI](https://github.com/hollg/base-server/workflows/CI/badge.svg) ![Secutiry Audit](https://github.com/hollg/base-server/workflows/Security%20Audit/badge.svg)
 
 A boilerplate Rust web server to serve as the starting point for other projects.
 
