@@ -36,7 +36,9 @@ echo >&2 "Postgres is up and running on port ${DB_PORT} - running migrations now
 
 export DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 # For GitHub Actions workflow
-echo "DATABASE_URL=${DATABASE_URL}" >>$GITHUB_ENV
+if [$CI]; then
+    echo "DATABASE_URL=${DATABASE_URL}" >>$GITHUB_ENV
+fi
 
 sqlx database create
 sqlx migrate run
