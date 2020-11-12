@@ -31,9 +31,7 @@ pub async fn subscription(
 #[tracing::instrument(name = "Saving new user details in the database", skip(form, pool))]
 pub async fn insert_subscriber(pool: &PgPool, form: &FormData) -> Result<(), sqlx::Error> {
     sqlx::query!(
-        r#"
-INSERT INTO subscription (id, email, name) VALUES ($1, $2, $3)
-"#,
+        "INSERT INTO subscription (id, email, name) VALUES ($1, $2, $3)",
         Uuid::new_v4(),
         form.email,
         form.name
