@@ -18,7 +18,7 @@ chrono = "0.4.15"
 config = "0.10.1"
 serde = {version = "1", features = ["derive"]}
 serde-aux = "1.1.0"
-sqlx = {version = "0.4.0-beta.1", default-features = false, features = ["runtime-tokio", "macros", "postgres", "uuid", "chrono", "migrate", "offline"]}
+sqlx = {version = "0.4.1", default-features = false, features = ["runtime-tokio-rustls", "macros", "postgres", "uuid", "chrono", "migrate", "offline"]}
 tracing = "0.1.21"
 tracing-actix-web = "0.2.1"
 tracing-bunyan-formatter = "0.1.6"

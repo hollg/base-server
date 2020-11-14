@@ -11,7 +11,8 @@ async fn main() -> std::io::Result<()> {
     telemetry::init_subscriber(subscriber);
 
     let config = get_config().expect("Failed to read configuration");
-    let address = format!("127.0.0.1:{}", config.application.port);
+
+    let address = format!("{}:{}", config.application.host, config.application.port);
 
     let listener = TcpListener::bind(address)?;
 
